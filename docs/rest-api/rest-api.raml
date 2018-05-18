@@ -1,0 +1,21 @@
+#%RAML 1.0
+title: Phone-Book API
+version: 0.1
+mediaType: application/json
+
+resourceTypes:
+  collection: !include collection.raml
+  collection-item: !include collection-item.raml
+
+traits:
+  paginated: !include paginated.raml
+
+/phoneBookEntries:
+  type: collection
+  description: All phone book entries in a paginated collection.
+  is: [ paginated ]
+  /{id}:
+    type: collection-item
+    uriParameters:
+      id:
+        type: integer
