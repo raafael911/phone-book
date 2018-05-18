@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>364</y>
+      <w>196</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>PhoneBookEntry
+--
+firstName: String
+lastName: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>798</x>
+      <y>392</y>
+      <w>147</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>PhoneNumber
+--
+category: ContactCategory
+phoneNumber: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>413</y>
+      <w>182</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-[category]
+m1=1</panel_attributes>
+    <additional_attributes>240.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>938</x>
+      <y>140</y>
+      <w>175</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+ContactCategory
+--
+Private
+Mobile
+Business</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
