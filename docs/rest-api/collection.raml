@@ -1,7 +1,23 @@
 #%RAML 1.0
+types:
+  PhoneBookEntry: !include phone-book-entry.raml
+
 usage: This resourceType should be used for any collection of items
-   description: The collection of <<resourcePathName>>
-   get:
-     description: Get all <<resourcePathName>>, optionally filtered
-   post:
-     description: Create a new <<resourcePathName | !singularize>>
+description: The collection of <<resourcePathName>>
+get:
+  description: Get all <<resourcePathName>>, optionally filtered
+  responses:
+    200:
+      body:
+        application/json:
+          type: PhoneBookEntry
+post:
+  description: Create a new <<resourcePathName | !singularize>>
+  responses:
+    201:
+      body:
+        application/json:
+          type: PhoneBookEntry
+    400:
+      description: |
+        Error in request data. <<resourcePathName | !singularize>> could not be created.

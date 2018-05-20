@@ -1,0 +1,13 @@
+usage: This type describes a telephone book entry
+
+types:
+  PhoneNumber: !include phone-number.raml
+
+type: object
+properties:
+  firstName:
+    type: string
+  lastName:
+    type: string
+  phoneNumbers:
+    type: PhoneNumber[]

@@ -1,9 +1,30 @@
 #%RAML 1.0
 usage: This resourceType should be used for any item of a collection of items
-  description: A single item of a collection of <<resourcePathName>>
-    get:
-      description: Get all <<resourcePathName>>, optionally filtered
-    put:
-      description: Update an existing <<resourcePathName | !singularize>>
-    delete:
-      description: Delete an existing <<resourcePathName | !singularize>>
+description: A single item of a collection of <<resourcePathName>>
+  get:
+    description: Get a single <<resourcePathName | !singularize>>, optionally filtered
+    responses:
+      200:
+        body:
+          application/json:
+            type: PhoneBookEntry
+      404:
+        description: <<resourcePathName | !singularize>> not found
+  put:
+    description: Update an existing <<resourcePathName | !singularize>>
+    responses:
+      200:
+        body:
+          application/json:
+            type: PhoneBookEntry
+      404:
+        description: <<resourcePathName | !singularize>> not found
+  delete:
+    description: Delete an existing <<resourcePathName | !singularize>>
+    responses:
+      204:
+        body:
+          application/json:
+            type: PhoneBookEntry
+      404:
+        description: <<resourcePathName | !singularize>> not found

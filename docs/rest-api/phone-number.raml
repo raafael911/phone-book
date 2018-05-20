@@ -1,0 +1,9 @@
+usage: Thiy type describes a phone number (mobile or fixed-line)
+type: object
+properties:
+  category:
+    type: string
+    enum: ["work", "mobile", "private"]
+  phoneNumber:
+    type: string
+    pattern: ^$
