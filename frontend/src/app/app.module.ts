@@ -11,6 +11,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { PeopleComponent } from './people/people.component';
 import { FilterPipe } from './filter.pipe';
 import { PersonFormComponent } from './person-form/person-form.component';
+import { PersonCreateComponent } from './person-create/person-create.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PersonFormComponent } from './person-form/person-form.component';
     PersonDetailComponent,
     PeopleComponent,
     FilterPipe,
-    PersonFormComponent
+    PersonFormComponent,
+    PersonCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -2,33 +2,41 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">{{person.firstName}}&nbsp;{{person.lastName}}</h2>
+
       <hr/>
 
-      <div class="row">
-        <div class="col-md-6">
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <th scope="row">First name:</th>
-                <td>{{person.firstName}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Last name:</th>
-                <td>{{person.lastName}}</td>
-              </tr>
-            </tbody>
-          </table>
+      <form (ngSubmit)="onSubmit()" #personForm="ngForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label for="inputFirstName" class="col col-form-label">First Name:</label>
+              <input [(ngModel)]="person.firstName" name="firstName" class="form-control col" *ngIf="editMode"/>
+              <input [(ngModel)]="person.firstName" name="firstName" readonly class="form-control-plaintext col" *ngIf="!editMode"/>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputFirstName" class="col col-form-label">Last Name:</label>
+              <input [(ngModel)]="person.lastName" name="lastName" class="form-control col" *ngIf="editMode"/>
+              <input [(ngModel)]="person.lastName" name="lastName" readonly class="form-control-plaintext col" *ngIf="!editMode"/>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h4>Phone Numbers</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let contact of person.phoneNumbers">
+                <input [(ngModel)]="contact.phoneNumber" name="phoneNumber" class="form-control" *ngIf="editMode"/>
+                <input [(ngModel)]="contact.phoneNumber" name="phoneNumber" readonly class="form-control-plaintext" *ngIf="!editMode"/>
+                &nbsp;
+                <span class="badge badge-primary">{{contact.category}}</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="col-md-6">
-          <h4>Phone Numbers</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let contact of person.phoneNumbers">
-              {{contact.phoneNumber}}&nbsp;<span class="badge badge-primary">{{contact.category}}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+        <button type="submit" class="btn btn-success" [disabled]="!personForm.form.valid" *ngIf="editMode">Submit</button>
+        <button type="button" class="btn btn-default" (click)="abortEdit()" *ngIf="editMode">Abort</button>
+      </form>
 
     </div>
   </div>

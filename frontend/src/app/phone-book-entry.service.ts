@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-export interface PhoneNumber {
+export class PhoneNumber {
   phoneNumber: string;
   category: string;
 }
 
-export interface PhoneBookEntry {
+export class PhoneBookEntry {
   _id: string;
   firstName: string;
   lastName: string;
@@ -17,7 +17,6 @@ export interface PhoneBookEntry {
 @Injectable({
   providedIn: 'root'
 })
-
 export class PhoneBookEntryService {
 
   private REST_URL: string = 'http://localhost:3000/phoneBookEntries';

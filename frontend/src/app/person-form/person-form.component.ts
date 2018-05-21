@@ -16,4 +16,12 @@ export class PersonFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+
+  }
+
+  abortEdit() {
+    
+  }
+
 }
