@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class PhoneNumber {
   phoneNumber: string;
@@ -12,7 +12,17 @@ export class PhoneBookEntry {
   firstName: string;
   lastName: string;
   phoneNumbers: PhoneNumber[];
+
+  constructor() {
+    this.firstName = '';
+    this.lastName = '';
+    this.phoneNumbers = new Array<PhoneNumber>();
+  }
 }
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +42,7 @@ export class PhoneBookEntryService {
   }
 
   insertEntry(entry: PhoneBookEntry): Observable<PhoneBookEntry> {
-    return this.http.post<PhoneBookEntry>(this.REST_URL, entry);
+    return this.http.post<PhoneBookEntry>(this.REST_URL, entry, httpOptions);
   }
 
   updateEntry(entry: PhoneBookEntry): Observable<void> {

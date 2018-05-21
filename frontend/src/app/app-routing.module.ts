@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PeopleComponent } from './people/people.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
-import { PersonFormComponent } from './person-form/person-form.component';
+import { PersonCreateComponent } from './person-create/person-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/people', pathMatch: 'full' },
@@ -11,7 +11,7 @@ const routes: Routes = [
     path: 'people',
     component: PeopleComponent,
     children: [
-      { path: 'new', component: PersonFormComponent },
+      { path: 'new', component: PersonCreateComponent },
       { path: ':id', component: PersonDetailComponent }
     ]
   }

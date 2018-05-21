@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PhoneBookEntry } from '../phone-book-entry.service';
+import { PhoneBookEntry, PhoneNumber, PhoneBookEntryService } from '../phone-book-entry.service';
 
 @Component({
   selector: 'app-person-form',
@@ -11,17 +11,23 @@ export class PersonFormComponent implements OnInit {
   @Input() person: PhoneBookEntry;
   @Input() editMode: boolean;
 
-  constructor() { }
+  categoryOptions: Array<String> = ['private', 'mobile', 'business'];
+
+  constructor(private phoneBookEntryService: PhoneBookEntryService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-
+    this.phoneBookEntryService.insertEntry(this.person);
   }
 
   abortEdit() {
-    
+
+  }
+
+  addPhoneNumber() {
+    this.person.phoneNumbers.push(new PhoneNumber());
   }
 
 }
