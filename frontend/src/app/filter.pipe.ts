@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Takes a `itemProperty` argument which denotes the property of each object which will
  *  be used to apply the filter function to.
  *
- * The filter is case insensitive and uses the String.startsWith() function.
+ * The filter is case insensitive and uses the String.contains() function.
  *
  * Usage:
  *   objectArray | exponentialStrength : searchText : 'objectPropertyName'
@@ -19,15 +19,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any[], searchText: string, itemProperty: string): any[] {
+  transform(items: any[], searchText: string, item: any, filterFunction: function): any[] {
     if(!items) return [];
     if(!searchText) return items;
-    if(!itemProperty) return [];
-
-    searchText = searchText.toLowerCase();
 
     return items.filter(item => {
-      return item[itemProperty].toLowerCase().startsWith(searchText);
+      return filterFunction(item, searchText);
     });
   }
 }

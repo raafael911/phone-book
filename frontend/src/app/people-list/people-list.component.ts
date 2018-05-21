@@ -22,4 +22,10 @@ export class PeopleListComponent implements OnInit {
     this.phoneBookEntryService.getAllEntries()
       .subscribe(entries => this.entries = entries);
   }
+
+  filterFunction(entry: PhoneBookEntry, searchText: string): boolean {
+
+    if (!entry) return true;
+    return entry.phoneNumbers.some(contact => contact.phoneNumber.match(searchText));
+  }
 }

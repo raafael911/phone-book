@@ -20,7 +20,12 @@
 <ul class="list-group">
   <a routerLink="{{entry._id}}"
       class="list-group-item list-group-item-action"
-      *ngFor="let entry of entries | filter : searchText : 'firstName'">
+      *ngFor="let entry of entries | filter : searchText : entry : filterFunction">
     {{entry.firstName}}&nbsp;{{entry.lastName}}
   </a>
 </ul>
+
+<!-- <ngb-pagination [collectionSize]="(entries | filter : searchText : 'firstName').length"
+  [(page)]="page"
+  aria-label="Default pagination"
+  [pageSize]="5"></ngb-pagination> -->
