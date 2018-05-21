@@ -1,0 +1,11 @@
+<div *ngIf="entry">
+  <div class="jumbotron">
+      <h1 class="display-4">{{person.firstName}}&nbsp;{{person.lastName}}</h1>
+
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let contact of entry.phoneNumbers">
+          {{contact.phoneNumber}}<span class="badge badge-light">{{contact.category}}</span>
+        </li>
+      </ul>
+  </div>
+</div>

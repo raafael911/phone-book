@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <a href="#"
+      class="list-group-item list-group-item-action"
+      *ngFor="let entry of entries"
+      [class.active]="entry === selectedEntry"
+      (click)="onSelect(entry)">
+    {{entry.firstName}}&nbsp;{{entry.lastName}}
+  </a>
+</ul>
