@@ -19,12 +19,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any[], searchText: string, item: any, filterFunction: function): any[] {
-    if(!items) return [];
-    if(!searchText) return items;
+  transform(items: any[], searchText: string, item: any, filterFunction: Function): any[] {
+    if (!items) {
+      return [];
+    }
 
-    return items.filter(item => {
-      return filterFunction(item, searchText);
+    if (!searchText) {
+      return items;
+    }
+
+    return items.filter(_item => {
+      return filterFunction(_item, searchText);
     });
   }
 }

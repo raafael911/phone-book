@@ -10,7 +10,7 @@ import { PhoneBookEntryService, PhoneBookEntry } from '../phone-book-entry.servi
 export class PeopleListComponent implements OnInit {
 
   entries: PhoneBookEntry[];
-  searchText: string = '';
+  searchText = '';
 
   constructor(private phoneBookEntryService: PhoneBookEntryService) { }
 
@@ -25,7 +25,10 @@ export class PeopleListComponent implements OnInit {
 
   filterFunction(entry: PhoneBookEntry, searchText: string): boolean {
 
-    if (!entry) return true;
-    return entry.phoneNumbers.some(contact => contact.phoneNumber.match(searchText));
+    if (!entry) {
+      return true;
+    }
+
+    return entry.phoneNumbers.some(contact => contact.phoneNumber.match(searchText) !== null);
   }
 }

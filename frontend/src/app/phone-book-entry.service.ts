@@ -29,7 +29,7 @@ const httpOptions = {
 })
 export class PhoneBookEntryService {
 
-  private REST_URL: string = 'http://localhost:3000/phoneBookEntries';
+  private REST_URL = 'http://localhost:3000/phoneBookEntries';
 
   constructor(private http: HttpClient) {}
 
