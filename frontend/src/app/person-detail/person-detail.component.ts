@@ -11,7 +11,7 @@ import { PhoneBookEntryService, PhoneBookEntry } from '../phone-book-entry.servi
 })
 export class PersonDetailComponent implements OnInit {
 
-  @Input() entry: PhoneBookEntry;
+  entry: PhoneBookEntry;
 
   constructor(
     private route: ActivatedRoute,
