@@ -2,12 +2,34 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">{{entry.firstName}}&nbsp;{{entry.lastName}}</h2>
+      <hr/>
 
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let contact of entry.phoneNumbers">
-          {{contact.phoneNumber}}<span class="badge badge-light">{{contact.category}}</span>
-        </li>
-      </ul>
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">First name:</th>
+                <td>{{entry.firstName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Last name:</th>
+                <td>{{entry.lastName}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6">
+          <h4>Phone Numbers</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let contact of entry.phoneNumbers">
+              {{contact.phoneNumber}}&nbsp;<span class="badge badge-primary">{{contact.category}}</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

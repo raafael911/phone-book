@@ -10,7 +10,7 @@ import { PhoneBookEntryService, PhoneBookEntry } from '../phone-book-entry.servi
 export class PeopleListComponent implements OnInit {
 
   entries: PhoneBookEntry[];
-  selectedEntry: PhoneBookEntry;
+  searchText: string = '';
 
   constructor(private phoneBookEntryService: PhoneBookEntryService) { }
 
@@ -22,9 +22,4 @@ export class PeopleListComponent implements OnInit {
     this.phoneBookEntryService.getAllEntries()
       .subscribe(entries => this.entries = entries);
   }
-
-  onSelect(entry: PhoneBookEntry): void {
-    this.selectedEntry = entry;
-  }
-
 }
