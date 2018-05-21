@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PhoneBookEntry } from '../phone-book-entry';
+import { PhoneBookEntryService, PhoneBookEntry } from '../phone-book-entry.service';
 
 @Component({
   selector: 'app-person-detail',

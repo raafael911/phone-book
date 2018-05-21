@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PhoneBookEntry } from '../phone-book-entry';
-import { PHONE_BOOK_ENTRIES } from '../mock-people';
+import { PhoneBookEntryService, PhoneBookEntry } from '../phone-book-entry.service';
 
 @Component({
   selector: 'app-people-list',
@@ -10,12 +9,18 @@ import { PHONE_BOOK_ENTRIES } from '../mock-people';
 })
 export class PeopleListComponent implements OnInit {
 
-  entries = PHONE_BOOK_ENTRIES;
+  entries: PhoneBookEntry[];
   selectedEntry: PhoneBookEntry;
 
-  constructor() { }
+  constructor(private phoneBookEntryService: PhoneBookEntryService) { }
 
   ngOnInit() {
+    this.getEntries();
+  }
+
+  getEntries(): void {
+    this.phoneBookEntryService.getAllEntries()
+      .subscribe(entries => this.entries = entries);
   }
 
   onSelect(entry: PhoneBookEntry): void {
