@@ -12,7 +12,11 @@ router.get('/', function(req, res) {
   database.get().collection(tableName)
     .find()
     .toArray()
-    .then(data => res.json(data));
+    .then(data => res.json(data))
+    .except(err => {
+      debug(err);
+      res.sendStats(500);
+    });
 });
 
 /* GET single phoneBookEntry */
@@ -21,7 +25,10 @@ router.get('/:id', function(req, res) {
   database.get().collection(tableName)
     .findOne({_id: new ObjectID(req.params.id)})
     .then(opResult => res.json(opResult))
-    .catch(err => debug(err));
+    .catch(err => {
+      debug(err);
+      res.sendStats(404);
+    });
 });
 
 /* POST create phoneBookEntry */
@@ -29,8 +36,17 @@ router.post('/', function(req, res) {
 
   database.get().collection(tableName)
     .insertOne(req.body)
-    .then(opResult => res.json(opResult.ops[0]))
-    .except(err => debug(err));
+    .then(opResult => {
+      if (opResult.ops.length < 1) {
+        res.sendStatus(500);
+      } else {
+        res.json(opResult.ops[0]);
+      }
+    })
+    .except(err => {
+      debug(err);
+      res.sendStatus(500);
+    });
 });
 
 /* DELETE phoneBookEntry */
