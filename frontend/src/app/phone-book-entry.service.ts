@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { PhoneNumber } from './phone-number';
-
 export interface PhoneNumber {
   phoneNumber: string;
   category: string;

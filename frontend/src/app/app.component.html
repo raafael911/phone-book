@@ -1,21 +1,7 @@
 <div class="container-fluid">
 
-  <h1>Welcome to {{ title }}!</h1>
+  <h1>Welcome to {{ title }}</h1>
 
-  <div class="row">
-
-    <div class="col-md-3">
-
-      <app-people-list></app-people-list>
-
-    </div>
-
-    <div class="col-md-8">
-
-      <app-person-detail [entry]="selectedEntry"></app-person-detail>
-
-    </div>
-
-  </div>
+  <router-outlet></router-outlet>
 
 </div>
