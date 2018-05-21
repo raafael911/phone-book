@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var database = require('../database');
+var ObjectID = require('mongodb').ObjectID;
+var debug = require('debug')('backend:resource');
 
 var tableName = 'phoneBookEntries';
 
@@ -14,10 +16,10 @@ router.get('/', function(req, res) {
 });
 
 /* GET single phoneBookEntry */
-router.get('/', function(req, res) {
+router.get('/:id', function(req, res) {
 
   database.get().collection(tableName)
-    .findOne({_id: ObjectId(req.params.id)})
+    .findOne({_id: new ObjectID(req.params.id)})
     .then(opResult => res.json(opResult))
     .catch(err => debug(err));
 });
@@ -35,7 +37,7 @@ router.post('/', function(req, res) {
 router.delete('/:id', function(req, res) {
 
   database.get().collection(tableName)
-    .deleteOne({_id: ObjectId(req.params.id)})
+    .deleteOne({_id: new ObjectID(req.params.id)})
     .then(opResult => {
       if (opResult.result.ok != 1 || opResult.deletedCount < 1) {
         res.sendStatus(404);
@@ -50,7 +52,7 @@ router.delete('/:id', function(req, res) {
 router.put('/:id', function(req, res) {
 
   database.get().collection(tableName)
-    .updateOne({_id: ObjectId(req.params.id)}, {$set: req.body.json})
+    .updateOne({_id: new ObjectID(req.params.id)}, {$set: req.body.json})
     .then(opResult => {
       if (opResult.result.ok != 1 || opResult.deleteCount < 1) {
         res.sendStatus(404);
