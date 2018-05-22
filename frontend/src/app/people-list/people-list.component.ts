@@ -29,6 +29,10 @@ export class PeopleListComponent implements OnInit {
       return true;
     }
 
-    return entry.phoneNumbers.some(contact => contact.phoneNumber.match(searchText) !== null);
+    let lowerSearchText = searchText.toLowerCase();
+
+    return entry.phoneNumbers.some(contact => contact.phoneNumber.match(lowerSearchText) !== null) ||
+      entry.firstName.toLowerCase().match(lowerSearchText) !== null ||
+      entry.lastName.toLowerCase().match(lowerSearchText) !== null;
   }
 }
