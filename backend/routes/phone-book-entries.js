@@ -144,10 +144,11 @@ var createRecord = function(req, res) {
         res.sendStatus(500);
       } else {
 
+        res.status(201);
         res.json(opResult.ops[0]);
       }
     })
-    .except(err => {
+    .catch(err => {
 
       debug(err);
       res.sendStatus(500);
