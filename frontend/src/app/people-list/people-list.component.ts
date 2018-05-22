@@ -29,7 +29,7 @@ export class PeopleListComponent implements OnInit {
       return true;
     }
 
-    let lowerSearchText = searchText.toLowerCase();
+    const lowerSearchText = searchText.toLowerCase();
 
     return entry.phoneNumbers.some(contact => contact.phoneNumber.match(lowerSearchText) !== null) ||
       entry.firstName.toLowerCase().match(lowerSearchText) !== null ||
