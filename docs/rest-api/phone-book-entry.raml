@@ -4,10 +4,17 @@ types:
   PhoneNumber: !include phone-number.raml
 
 type: object
+additionalProperties: false
 properties:
+  _id:
+    type: integer
+    required: false
   firstName:
     type: string
+    required: true
   lastName:
     type: string
+    required: true
   phoneNumbers:
     type: PhoneNumber[]
+    required: true

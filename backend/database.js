@@ -9,9 +9,10 @@ var _dbHandle = null;
 
 var database = {
 
-  /* Connects to a local mongodb database on port 27017. This method automatically
-  connects to the database specified by `databaseName`. */
-
+  /**
+  * Connects to a local mongodb database on port 27017. This method automatically
+  * connects to the database specified by `databaseName`.
+  */
   connect: function() {
 
     MongoClient.connect('mongodb://localhost:27017', function(err, client) {
@@ -26,8 +27,10 @@ var database = {
     });
   },
 
-  /* Get the connected and ready to use database handle. For documentation on how
-  to use this handle see http://mongodb.github.io/node-mongodb-native/3.0/api/Db.html. */
+  /**
+  * Get the connected and ready to use database handle. For documentation on how
+  * to use this handle see http://mongodb.github.io/node-mongodb-native/3.0/api/Db.html.
+  */
   get: function() {
 
     if (!_dbHandle) {

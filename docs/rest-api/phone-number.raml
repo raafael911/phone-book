@@ -1,9 +1,12 @@
 usage: Thiy type describes a phone number (mobile or fixed-line)
 type: object
+additionalProperties: false
 properties:
   category:
     type: string
     enum: ["work", "mobile", "private"]
+    required: true
   phoneNumber:
     type: string
-    pattern: ^$
+    pattern: [0-9]*\/*(\+49)*[ ]*(\([0-9]+\))*([ ]*(-|–)*[ ]*[0-9]+)*
+    required: true
